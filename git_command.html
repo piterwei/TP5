@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+	<title>git命令</title>
+	<style>
+		body{
+			font-family: 'YaHei Consolas Hybrid','MicroSoft YaHei',sans-serif;
+		}
+		p{
+			color: green;
+			text-indent: 5em;
+		}
+		p > span{
+			color: darkblue;
+		}
+	</style>
+</head>
+<body>
+	<h1>git常用命令大全</h1>
+	<p><span><span>关联用户：</span></span>$ git config --global user.name "yourName"</p>
+	<p><span>关联邮箱账号：</span>$ git config --global user.email "yourEmail"</p>
+	<p><span>创建新文件夹：</span>$ mkdir &lt;file&gt;</p>
+	<p><span>显示当前目录：</span>$ pwd</p>
+	<p><span>将某个目录变成Git仓库：</span>$ git init</p>
+	<p><span>将文件添加到仓库：</span>$ git add &lt;file&gt;</p>
+	<p><span>把文件提交到仓库，-m后面输入的是本次提交的说明：</span>$ git commit -m "wrote a readme file"</p>
+	<p><span>显示仓库当前的状态：</span>$ git status</p>
+	<p><span>查看文件的修改内容：</span>$ git diff &lt;file&gt;</p>
+	<p><span>查看提交历史：</span>$ git log</p>
+	<p><span>单行显示提交历史：</span>$ git log --pretty=oneline</p>
+	<p><span>把当前版本回退到上一个版本：</span>$ git reset --hard HEAD^</p>
+	<p><span>查看 readme.txt 文件的内容：</span>$ cat readme.txt</p>
+	<p><span>回退到某一版本[例如3628164]：</span>$ git reset --hard 3628164</p>
+	<p><span>查看命令历史：</span>$ git reflog</p>
+	<p><span>查看文件工作区和版本库里最新版本的区别：</span>$ git diff HEAD -- &lt;file&gt;</p>
+	<p><span>丢弃文件工作区的修改：</span>$ git checkout -- &lt;file&gt;</p>
+	<p><span>把文件暂存区的修改回退到工作区：</span>$ git reset HEAD &lt;file&gt;</p>
+	<p><span>删除文件：</span>$ rm &lt;file&gt;</p>
+	<p><span>创建SSH Key：</span>$ ssh-keygen -t rsa -C "yourEmail"</p>
+	<p><span>建立本地仓库与GitHub远程仓库的关联：</span>$ git remote add origin git@github.com:GitHubName/&lt;file&gt;.git</p>
+	<p><span>&emsp;&emsp;或者：</span>$ git remote add origin https://github.com/GitHubName/&lt;file&gt;.git<span>把本地库的内容推送到远程，</span></p>
+	<p><span>&emsp;&emsp;加-u参数，把本地的master分支和远程的master分支关联起来，在以后的推送或者拉取时就可以简化命令：</span>$ git push -u origin master</p>
+	<p><span>&emsp;&emsp;简化后的推送命令：</span>$ git push origin master</p>
+	<p><span>从GitHub远程仓库克隆：</span>$ git clone git@github.com:GitHubName/&lt;file&gt;.git</p>
+	<p><span>或者：</span>$ git clone https://github.com/GitHubName/&lt;file&gt;.git</p>
+	<p><span>查看文件列表：</span>$ ls</p>
+	<p><span>创建“dev”分支：</span>$ git branch dev</p>
+	<p><span>切换到“dev”分支：</span>$ git checkout dev</p>
+	<p><span>创建“dev”分支并且切换到“dev”分支：</span>$ git checkout -b dev</p>
+	<p><span>列出所有分支，当前分支前面会标一个*号：</span>$ git branch</p>
+	<p><span>合并“dev”分支到当前分支：</span>$ git merge dev</p>
+	<p><span>删除dev分支：</span>$ git branch -d dev</p>
+	<p><span>用带参数的 git log 查看分支的合并情况：</span>$ git log --graph --pretty=oneline --abbrev-commit</p>
+	<p><span>--no-ff参数，表示禁用Fast forward，因为本次合并要创建一个新的commit，所以加上-m参数，把commit描述写进去：</span>$ git merge --no-ff -m "merge with no-ff" dev</p>
+	<p><span>把当前工作现场“储藏”起来：</span>$ git stash</p>
+	<p><span>查看储藏的工作现场列表：</span>$ git stash list</p>
+	<p><span>恢复“储藏”的工作现场同时把stash内容也删除：</span>$ git stash pop</p>
+	<p><span>恢复“储藏”的工作现场但不删除stash内容，需要用git stash drop来删除：</span>$ git stash apply</p>
+	<p><span>丢弃一个没有被合并过的“dev”分支：</span>$ git branch -D dev</p>
+	<p><span>查看远程库的信息：</span>$ git remote</p>
+	<p><span>查看远程库的详细信息：</span>$ git remote -v</p>
+	<p><span>推送“dev”分支到远程：</span>$ git push origin dev</p>
+	<p><span>在本地创建dev和远程分支对应的dev分支：</span>$ git checkout -b dev origin/dev</p>
+	<p><span>指定本地dev分支与远程origin/dev分支的链接：</span>$ git branch --set-upstream dev origin/dev</p>
+	<p><span>抓取分支：</span>$ git pull</p>
+	<p><span>打一个新标签v1.0：</span>$ git tag v1.0</p>
+	<p><span>查看所有标签：</span>$ git tag</p>
+	<p><span>对某一 commit id(例如6224937) 打标签：</span>$ git tag v0.9 6224937</p>
+	<p><span>查看v0.9标签信息：</span>$ git show v0.9</p>
+	<p><span>创建带有说明的标签，用-a指定标签名，-m指定说明文字，3628164为示例commit id：</span>$ git tag -a v0.1 -m "version 0.1 released" 3628164</p>
+	<p><span>通过-s用私钥签名一个标签：</span>$ git tag -s v0.2 -m "signed version 0.2 released" fec145a</p>
+	<p><span>删除本地v0.1标签：</span>$ git tag -d v0.1</p>
+	<p><span>推送v1.0标签到远程：</span>$ git push origin v1.0</p>
+	<p><span>一次性推送全部尚未推送到远程的本地标签：</span>$ git push origin --tags</p>
+	<p><span>删除本地v0.9标签：</span>$ git tag -d v0.9</p>
+	<p><span>删除远程v0.9标签：</span>$ git push origin :refs/tags/v0.9</p>
+	<p><span>让Git显示颜色：</span>$ git config --global color.ui true</p>
+	<p><span>配置st为status的别名：</span>$ git config --global alias.st status</p>
+</body>
+</html>
